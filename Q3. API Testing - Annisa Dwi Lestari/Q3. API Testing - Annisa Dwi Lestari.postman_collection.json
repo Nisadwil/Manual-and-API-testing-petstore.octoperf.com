@@ -1,0 +1,226 @@
+{
+	"info": {
+		"_postman_id": "e7bb58a4-9c36-4268-8d18-3fa06418612d",
+		"name": "Q3. API Testing - Annisa Dwi Lestari",
+		"description": "Postman collection for testing NAME, CURRENCY, and LANGUAGE endpoints from restcountries.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "14497118"
+	},
+	"item": [
+		{
+			"name": "NAME",
+			"item": [
+				{
+					"name": "1. Valid country",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://restcountries.com/v3.1/name/Indonesia",
+						"description": "Should return details for France"
+					},
+					"response": []
+				},
+				{
+					"name": "2. Valid country lowercase",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://restcountries.com/v3.1/name/indonesia",
+						"description": "Should return same results as uppercase"
+					},
+					"response": []
+				},
+				{
+					"name": "3. Partial match",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://restcountries.com/v3.1/name/Indo",
+						"description": "Should return countries matching 'fra'"
+					},
+					"response": []
+				},
+				{
+					"name": "4. Invalid country",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://restcountries.com/v3.1/name/kwangya",
+						"description": "Should return 404 Not Found"
+					},
+					"response": []
+				},
+				{
+					"name": "5. Numeric input",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://restcountries.com/v3.1/name/999",
+						"description": "Should return 404 or error"
+					},
+					"response": []
+				},
+				{
+					"name": "6. Special characters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://restcountries.com/v3.1/name/$",
+						"description": "Should return 404 or error"
+					},
+					"response": []
+				},
+				{
+					"name": "7. Empty input",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://restcountries.com/v3.1/name/",
+						"description": "Should return 400 or appropriate error"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoint **NAME** digunakan untuk mengambil informasi detail negara berdasarkan **nama negara**.\n\n**Scenario:**\n\nSebagai user, saya ingin melakukan pencarian negara berdasarkan nama negara untuk memastikan API memberikan respons yang benar dalam berbagai kondisi input.\n\n**Test Cases:**\n\n| No | **Test Case** | **Test Type** | Test Steps | Expected Result |\n| --- | --- | --- | --- | --- |\n| 1 | Valid Country | Positive | 1\\. Kirim request GET ke endpoint /name/Indonesia | Kode status 200, dan respons JSON berisi detail lengkap negara Indonesia. |\n| 2 | Valid Country Lowercase | Positive | 1\\. Kirim request GET ke endpoint /name/indonesia | Kode status 200, dan respons JSON berisi detail lengkap negara Indonesia. |\n| 3 | Partial Match | Positive | 1\\. Kirim request GET ke endpoint /name/Indo | Kode 200, daftar negara yang mengandung \"Indo\", seperti Indonesia. |\n| 4 | Invalid Country | Negative | 1\\. Kirim request GET ke endpoint /name/kwangya | Kode 404 Not Found |\n| 5 | Numeric Input | Negative | 1\\. Kirim request GET ke endpoint /name/999 | Kode 404 Not Found |\n| 6 | Special Characters | Negative | 1\\. Kirim request GET ke endpoint /name/$ | Kode 404 Not Found |\n| 7 | Empty Input | Negative | 1\\. Kirim request GET ke endpoint /name/ | Kode 404 Not Found |"
+		},
+		{
+			"name": "CURRENCY",
+			"item": [
+				{
+					"name": "1. Valid currency name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://restcountries.com/v3.1/currency/rupiah",
+						"description": "Should return countries using USD"
+					},
+					"response": []
+				},
+				{
+					"name": "2. Valid currency code",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://restcountries.com/v3.1/currency/RUPIAH",
+						"description": "Should return same results as lowercase"
+					},
+					"response": []
+				},
+				{
+					"name": "3. Invalid currency code",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://restcountries.com/v3.1/currency/zzz",
+						"description": "Should return 404"
+					},
+					"response": []
+				},
+				{
+					"name": "4. Numeric input",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://restcountries.com/v3.1/currency/789",
+						"description": "Should return 404"
+					},
+					"response": []
+				},
+				{
+					"name": "5. Special characters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://restcountries.com/v3.1/currency/$",
+						"description": "Should return 404"
+					},
+					"response": []
+				},
+				{
+					"name": "6. Empty input",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://restcountries.com/v3.1/currency/",
+						"description": "Should return 400 or error"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoint **CURRENCY** digunakan untuk mengambil informasi detail negara yang menggunakan mata uang tertentu berdasarkan **nama** atau **kode currency.**\n\n**Scenario:**\n\nSebagai user, saya ingin mengetahui daftar negara yang menggunakan mata uang tertentu dan memastikan API memberikan respons yang benar dalam berbagai kondisi input.\n\n**Test Cases:**\n\n| No | **Test Case** | **Test Type** | Test Steps | Expected Result |\n| --- | --- | --- | --- | --- |\n| 1 | Valid Currency Name | Positive | 1\\. Kirim request GET ke endpoint /currency/rupiah | Kode 200, respons berisi negara-negara yang menggunakan mata uang rupiah. |\n| 2 | Valid Currency Code | Positive | 1\\. Kirim request GET ke endpoint /currency/IDR | Kode 200, respons berisi negara-negara yang menggunakan kode mata uang IDR. |\n| 3 | Invalid Currency Code | Negative | 1\\. Kirim request GET ke endpoint /currency/gold | Kode 404 Not Found |\n| 4 | Numeric Input | Negative | 1\\. Kirim request GET ke endpoint /currency/789 | Kode 404 Not Found |\n| 5 | Special Characters | Negative | 1\\. Kirim request GET ke endpoint /currency/$ | Kode 404 Not Found |\n| 6 | Empty Input | Negative | 1\\. Kirim request GET ke endpoint /currency/ | Kode 404 Not Found |"
+		},
+		{
+			"name": "LANGUAGE",
+			"item": [
+				{
+					"name": "1. Valid language",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://restcountries.com/v3.1/lang/Japanese",
+						"description": "Should return countries that speak English"
+					},
+					"response": []
+				},
+				{
+					"name": "2. Valid short code",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://restcountries.com/v3.1/lang/jpn",
+						"description": "Should return similar results as full language name"
+					},
+					"response": []
+				},
+				{
+					"name": "3. Invalid language",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://restcountries.com/v3.1/lang/mezir",
+						"description": "Should return 404"
+					},
+					"response": []
+				},
+				{
+					"name": "4. Numeric input",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://restcountries.com/v3.1/lang/123",
+						"description": "Should return 404"
+					},
+					"response": []
+				},
+				{
+					"name": "5. Special characters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://restcountries.com/v3.1/lang/!!!",
+						"description": "Should return 404"
+					},
+					"response": []
+				},
+				{
+					"name": "6. Empty input",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://restcountries.com/v3.1/lang/",
+						"description": "Should return 400 or error"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoint **LANGUAGE** digunakan untuk mengambil informasi detail negara berdasarkan **bahasa yang digunakan**.\n\n**Scenario:**\n\nSebagai user, saya ingin mengetahui negara mana saja yang menggunakan bahasa tertentu dan memastikan API memberikan respons yang benar dalam berbagai kondisi input.\n\n**Test Cases:**\n\n| No | **Test Case** | **Test Type** | Test Steps | Expected Result |\n| --- | --- | --- | --- | --- |\n| 1 | Valid Language Name | Positive | 1\\. Kirim request GET ke endpoint /lang/Japanese | Kode 200, respons JSON berisi daftar negara yang menggunakan bahasa jepang. |\n| 2 | Valid Short Code | Positive | 1\\. Kirim request GET ke endpoint /lang/jpn | Kode 200, respons JSON berisi daftar negara yang menggunakan kode bahasa jpn. |\n| 3 | Invalid Language | Negative | 1\\. Kirim request GET ke endpoint /lang/mesir | Kode 404 Not Found |\n| 4 | Numeric Input | Negative | 1\\. Kirim request GET ke endpoint /lang/123 | Kode 404 Not Found |\n| 5 | Special Characters | Negative | 1\\. Kirim request GET ke endpoint /lang/!!! | Kode 404 Not Found |\n| 6 | Empty Input | Negative | 1\\. Kirim request GET ke endpoint /lang/ | Kode 404 Not Found |"
+		}
+	],
+	"variable": [
+		{
+			"key": "country_name",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
